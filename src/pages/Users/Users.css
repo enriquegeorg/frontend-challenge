@@ -11,8 +11,8 @@
 
 .boxContainer {
   width: 100%;
-  background: var(--white);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  background: var(--grey-scale-6);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.38);
   padding: 20px;
 
   display: flex;

@@ -32,5 +32,5 @@
 }
 
 .btn-secondary:hover {
-  background: var(--white);
+  background: var(--grey-scale-5);
 }

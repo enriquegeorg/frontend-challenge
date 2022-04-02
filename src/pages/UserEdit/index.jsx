@@ -77,13 +77,12 @@ function UserEdit() {
   return (
     <>
       <div className="formContainer">
-        <Link to="/users" style={{ textDecoration: "none", marginBottom: 20 }}>
+        <Link to="/users" style={{ marginBottom: 20 }}>
           <Button
-            type="secondary"
+            class="secondary"
             text="Voltar"
             width={120}
             height={40}
-            bordered
             icon={<ArrowBack style={{ color: "#424242", marginRight: 8 }} />}
           />
         </Link>

@@ -17,6 +17,10 @@
   cursor: pointer;
 }
 
+.buttonAction:hover {
+  background: var(--grey-scale-5);
+}
+
 .buttonAction:first-child {
   padding: 0px 16px 0px 0px;
   border-right: 1px solid var(--color-border);
