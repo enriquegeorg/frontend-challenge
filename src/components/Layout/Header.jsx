@@ -1,10 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
 
 function Header({ children }) {
   return (
-    <>
+    <React.Fragment>
       <header className="headerContainer">
         <div className="imgContainer">
           <Link to="/">
@@ -12,8 +13,8 @@ function Header({ children }) {
           </Link>
         </div>
       </header>
-      <body>{children}</body>
-    </>
+      {children}
+    </React.Fragment>
   );
 }
 
