@@ -15,7 +15,6 @@ export default (props) => {
     borderColor: props.borderColor || "",
     text: props.text || "",
   };
-  console.log(props);
   return (
     <button
       className={buttonProps.class ? `btn btn-${buttonProps.class}` : `btn`}

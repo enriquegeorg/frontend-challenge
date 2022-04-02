@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Hero } from "../../components/LandingPage/Hero";
 import { HeroIllustration } from "../../components/LandingPage/HeroIllustration";
 import { Layout } from "../../components/LandingPage/Layout";

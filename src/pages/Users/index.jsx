@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 // import { withStyles } from '@material-ui/core/styles';
 import { TextField, withStyles } from "@material-ui/core";
 
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
+
 import Container from "@material-ui/core/Container";
 
 import Search from "@material-ui/icons/Search";
@@ -16,28 +24,28 @@ import "./Users.css";
 
 const CssTextField = withStyles({
   root: {
-    '&': {
+    "&": {
       width: 300,
     },
-    '& + &': {
+    "& + &": {
       marginLeft: 10,
     },
-    '& label.Mui-focused': {
-      color: '#000',
-      fontWeight: 'bold',
+    "& label.Mui-focused": {
+      color: "#000",
+      fontWeight: "bold",
     },
-    '& .MuiInput-underline:after': {
-      borderColor: '#C4C4C4',
+    "& .MuiInput-underline:after": {
+      borderColor: "#C4C4C4",
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: '#C4C4C4',
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#C4C4C4",
       },
-      '&:hover fieldset': {
-        borderColor: '#C4C4C4',
+      "&:hover fieldset": {
+        borderColor: "#C4C4C4",
       },
-      '&.Mui-focused fieldset': {
-        borderColor: '#C4C4C4',
+      "&.Mui-focused fieldset": {
+        borderColor: "#C4C4C4",
       },
     },
   },
@@ -51,6 +59,16 @@ function Users() {
 
   const [filteredUsers, setFilteredUsers] = useState([]);
 
+  const [userSelected, setUserSelected] = useState(null);
+
+  const handleClickOpen = (id) => {
+    if (id) setUserSelected(id);
+  };
+
+  const handleClose = () => {
+    setUserSelected(null);
+  };
+
   async function listUsers() {
     const response = await api.get("users");
 
@@ -63,10 +81,11 @@ function Users() {
     listUsers();
   }, []);
 
-  function removeUser(id) {
-    const newUsers = users.filter((user) => user.id !== id);
+  function removeUser() {
+    const newUsers = users.filter((user) => user.id !== userSelected);
     setUsers(newUsers);
     setFilteredUsers(newUsers);
+    setUserSelected(null);
   }
 
   function searchUsers() {
@@ -84,7 +103,7 @@ function Users() {
     <>
       <main className="mainContainer">
         <Container className="boxContainer">
-          <span className="titleContainer">Busca</span>
+          <h3 className="titleContainer">Busca</h3>
 
           <div className="inputGroup">
             <CssTextField
@@ -122,7 +141,41 @@ function Users() {
           height={40}
           icon={<PersonAdd style={{ color: "#424242", marginRight: 8 }} />}
         />
-        <UsersList users={filteredUsers} removeUser={removeUser} />
+        <UsersList users={filteredUsers} removeUser={handleClickOpen} />
+        <Dialog
+          open={!!userSelected}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            {"Você tem certeza que deseja excluir este usuário?"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              O usuário será excluído permanentemente e esta ação é
+              irreversível.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              class="primary"
+              onClick={handleClose}
+              text="Cancelar"
+              width={120}
+              height={40}
+            />
+            <Button
+              class="secondary"
+              onClick={removeUser}
+              autoFocus
+              text="Confirma"
+              width={120}
+              height={40}
+              color="red"
+            />
+          </DialogActions>
+        </Dialog>
       </main>
     </>
   );
