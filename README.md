@@ -1,3 +1,9 @@
+## Rodando aplicação
+
+- clonar o repositório ou descompactar o arquivo .zip
+- para instalar as dependências `npm install` dentro da pasta do projeto
+- para rodar a aplicação `npm start` também na pasta do projeto
+
 # frontend-challenge
 
 - React
@@ -33,3 +39,8 @@ Aqui na Gofind a gente trabalha com UX portanto no arquivo [SPECS.md](SPECS.md) 
 ---
 
 Lembrando que não precisa estar perfeito, é uma sugestão mostrando um pouco de como nós trabalhamos, mas é um bônus bem grande seguir as especificações.
+
+### Créditos
+
+Pelo template do front-end: equipe envolvida no projeto do Holly React (https://github.com/lukemcdonald/holly-react)
+Por alguns css e tips: pessoal que também fez fork do repositório do desafio 

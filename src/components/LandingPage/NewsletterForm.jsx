@@ -1,20 +1,23 @@
-import React from 'react'
-import classnames from 'clsx'
+import React from "react";
+import classnames from "clsx";
 
 export function NewsletterForm({ className, onSubmit, submitBtn }) {
-  const [email, setEmail] = React.useState('')
+  const [email, setEmail] = React.useState("");
 
   function handleSubmit(event) {
-    event.preventDefault()
-    onSubmit(email)
+    event.preventDefault();
+    onSubmit(email);
   }
 
   function handleChange(event) {
-    setEmail(event.target.value)
+    setEmail(event.target.value);
   }
 
   return (
-    <form onSubmit={handleSubmit} className={classnames('newsletter-form is-revealing md:flex', className)}>
+    <form
+      onSubmit={handleSubmit}
+      className={classnames("newsletter-form is-revealing md:flex", className)}
+    >
       <div className="mr-2 flex-shrink flex-grow">
         <label className="hidden" htmlFor="email" aria-hidden="true">
           Email
@@ -37,9 +40,9 @@ export function NewsletterForm({ className, onSubmit, submitBtn }) {
           className="-mt-px inline-flex cursor-pointer justify-center whitespace-nowrap rounded-sm border-0 bg-gradient-to-r from-secondary-500 to-secondary-400 py-4 px-7 text-center font-medium leading-4 text-white no-underline shadow-lg"
           type="submit"
         >
-          {submitBtn || 'Submit'}
+          {submitBtn || "Submit"}
         </button>
       </div>
     </form>
-  )
+  );
 }
