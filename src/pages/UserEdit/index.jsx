@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import TextField from "@material-ui/core/TextField";
+import { TextField, withStyles } from "@material-ui/core";
 import Avatar from "@material-ui/core/Avatar";
 
 import SaveAlt from "@material-ui/icons/SaveAlt";
@@ -13,11 +13,38 @@ import { api } from "../../services/api";
 
 import "./UserEdit.css";
 
+const CssTextField = withStyles({
+  root: {
+    "&": {
+      width: 300,
+    },
+    "& + &": {
+      marginLeft: 10,
+    },
+    "& label.Mui-focused": {
+      color: "#000",
+      fontWeight: "bold",
+    },
+    "& .MuiInput-underline:after": {
+      borderColor: "#C4C4C4",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#C4C4C4",
+      },
+      "&:hover fieldset": {
+        borderColor: "#C4C4C4",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#C4C4C4",
+      },
+    },
+  },
+})(TextField);
+
 function UserEdit() {
   const { id } = useParams();
 
-  const [saveSuccess, setSaveSuccess] = useState(false);
-  const [saveError, setSaveError] = useState(false);
   const [user, setUser] = useState({
     id: 0,
     first_name: "",
@@ -31,10 +58,9 @@ function UserEdit() {
 
     if (response.status === 200) {
       setUser(user);
-      setSaveSuccess(true);
       window.location.href = "/users";
     } else {
-      setSaveError(true);
+      alert("Erro ao salvar usuário");
     }
   }
 
@@ -82,28 +108,28 @@ function UserEdit() {
           </div>
 
           <div className="inputGroupUpdate">
-            <TextField
+            <CssTextField
               disabled
               label="ID"
               variant="outlined"
               value={user?.id}
               style={{ width: 280 }}
             />
-            <TextField
+            <CssTextField
               label="Primeiro nome"
               placeholder="Informe o seu primeiro nome"
               variant="outlined"
               value={user?.first_name}
               onChange={(e) => setUser({ ...user, first_name: e.target.value })}
             />
-            <TextField
+            <CssTextField
               label="Último nome"
               placeholder="Informe o seu ultimo nome"
               variant="outlined"
               value={user?.last_name}
               onChange={(e) => setUser({ ...user, last_name: e.target.value })}
             />
-            <TextField
+            <CssTextField
               required
               label="E-mail"
               placeholder="Informe o seu novo email"
