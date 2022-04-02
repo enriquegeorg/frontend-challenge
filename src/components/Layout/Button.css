@@ -1,0 +1,36 @@
+.btn {
+    height: 34px;
+    padding: 16px;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 4px;
+  
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    cursor: pointer;
+    transition: opacity 0.5s, background 0.5s;
+  }
+  
+  .btn-home {
+    color: var(--white);
+    background: var(--color-primary);
+  }
+
+  .btn-home:hover {
+    background: rgba(253,150,53,1);
+  }
+  
+  .btn-secondary {
+    color: var(--grey-scale-1);
+    background: transparent;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--white);
+  }
